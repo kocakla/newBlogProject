@@ -1,0 +1,2 @@
+# newBlogProject
+Personel blog project
