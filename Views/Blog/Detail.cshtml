@@ -24,8 +24,10 @@
           <li class="active"><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
-      </div>
-      <div class="logo">
+    using System.Security.Cryptography.Xml;
+#line default
+e default
+  <div class="logo">
         <h1><a href="index.html">Green<span>Line</span></a> <small>put your slogan here</small></h1>
       </div>
       <div class="clr"></div>
@@ -40,39 +42,34 @@
           <p>Posted by <a href="#">Owner</a> <span>&nbsp;&bull;&nbsp;</span> Filed under <a href="#">templates</a>, <a href="#">internet</a></p>
         <p>@Model.Description</p>
           <p>Tagged: <a href="#">@Model.Tags</a>, <a href="#">lectus</a>, <a href="#">varius</a>, <a href="#">turpis</a></p>
-          <p><a href="#"><strong>Comments (@Model.CommentCount)</strong></a> <span>&nbsp;&bull;&nbsp;</span> @Model.PublishDate <span>&nbsp;&bull;&nbsp;</span> <a href="#"><strong>Edit</strong></a></p>
+          <p><a href="#"><strong>Comments (@Model.CommentCount)</strong></a> <span>&nbsp;&bull;&nbsp;</span> @Model.PublishDate.ToString("MMMM d\\t\\h, yyyy 'at' h:mm tt") <span>&nbsp;&bull;&nbsp;</span> <a href="#"><strong>Edit</strong></a></p>
         </div>
         <div class="article">
-          <h2><span>3</span> Responses</h2>
+          <h2><span>Comments</span></h2>
           <div class="clr"></div>
-          <div class="comment"> <a href="#"><img src="/images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-            <p><a href="#">admin</a> Says:<br />
-              April 20th, 2009 at 2:17 pm</p>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
-          </div>
-          <div class="comment"> <a href="#"><img src="/images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-            <p><a href="#">Owner</a> Says:<br />
-              April 20th, 2009 at 3:21 pm</p>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</p>
-          </div>
-          <div class="comment"> <a href="#"><img src="/images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-            <p><a href="#">admin</a> Says:<br />
-              April 20th, 2009 at 2:17 pm</p>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
-          </div>
+          @foreach (var item in ViewBag.Comments)
+          {
+            <div class="comment"> <a href="#"><img src="/images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
+            <p><a href="#">@item.UserName</a> :<br />
+              @item.PublishDate</p>
+            <p>@item.Message</p>
+            </div>
+          }
+          
         </div>
         <div class="article">
           <h2><span>Leave a</span> Reply</h2>
           <div class="clr"></div>
-          <form action="#" method="post" id="leavereply">
+          <form action="/Blog/CreateComment" method="post" id="leavereply">
             <ol>
+              <input id="blogid" name="BlogId" type="hidden" value="@Model.Id"/>
               <li>
                 <label for="name">Name (required)</label>
-                <input id="name" name="name" class="text" />
+                <input id="name" name="UserName" class="text" required />
               </li>
               <li>
                 <label for="email">Email Address (required)</label>
-                <input id="email" name="email" class="text" />
+                <input id="email" name="UserEmail" class="text" required/>
               </li>
               <li>
                 <label for="website">Website</label>
@@ -80,7 +77,7 @@
               </li>
               <li>
                 <label for="message">Your Message</label>
-                <textarea id="message" name="message" rows="8" cols="50"></textarea>
+                <textarea id="message" name="Message" rows="8" cols="50"></textarea>
               </li>
               <li>
                 <input type="image" name="imageField" id="imageField" src="/images/submit.gif" class="send" />

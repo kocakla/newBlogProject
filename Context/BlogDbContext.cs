@@ -12,6 +12,6 @@ namespace WebApplication1.Context
         {
         }
         public DbSet<Blog> Blogs { get; set; }
-
+        public DbSet<Comment> Comments { get; set; }
     }
 }
