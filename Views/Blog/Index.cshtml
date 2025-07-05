@@ -13,9 +13,8 @@
             string newDescription = description.Length > 50? description.Substring(0,50) + "..." : description;
           }
           <p>@newDescription</p>
-          <p class="spec"><a href="/Blog/Detail?id=@item.Id" class="rm">Read more &raquo;</a> <a href="#" class="com"><span>@item.CommentCount</span> Comments</a></p>
-          <p class="spec"><a href="#" class="rm">Read more &raquo;</a> <a href="#" class="com"><span>@item.LikeCount</span> Likes</a></p>
-          <p class="spec"><a href="#" class="rm">Read more &raquo;</a> <a href="#" class="com"><span>@item.ViewCount</span> Views</a></p>
+          <a href="/Blog/Detail?id=@item.Id" class="rm">Read more &raquo;</a> <a href="#" class="com"><span>@item.CommentCount</span> Comments</a>
+          <a href="#" class="rm">Read more &raquo;</a> <a href="#" class="com"><span>@item.ViewCount</span> Views</a>
         </div>
     }
 </div>

@@ -22,6 +22,8 @@ namespace WebApplication1.Controllers
         public IActionResult Detail(int id)
         {
             var blog = _db.Blogs.Where(x => x.Id == id).FirstOrDefault();
+            blog.ViewCount += 1;
+            _db.SaveChanges();
             var comment = _db.Comments.Where(x => x.BlogId == id).ToList();
             ViewBag.Comments = comment.ToList();
             return View(blog);
@@ -31,8 +33,33 @@ namespace WebApplication1.Controllers
         {
             model.PublishDate = DateTime.Now;
             _db.Comments.Add(model);
+
+            var blog = _db.Blogs.Where(x => x.Id == model.BlogId).FirstOrDefault();
+            blog.CommentCount += 1;
+
             _db.SaveChanges();
-            return RedirectToAction("Detail", new {id = model.BlogId});
+            return RedirectToAction("Detail", new { id = model.BlogId });
+        }
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateContact(Contact model)
+        {
+            model.CreatedAt = DateTime.Now;
+            _db.Contacts.Add(model);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+        public IActionResult Support()
+        {
+            return View();
         }
     }
 }
