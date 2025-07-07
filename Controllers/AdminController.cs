@@ -22,9 +22,10 @@ namespace WebApplication1.Controllers
 
             return View(blogs);
         }
-        public IActionResult EditBlog()
+        public IActionResult EditBlog(int id)
         {
-            return View();
+            var blog = _db.Blogs.Where(x => x.Id == id).FirstOrDefault();
+            return View(blog);
         }
     }
 }
