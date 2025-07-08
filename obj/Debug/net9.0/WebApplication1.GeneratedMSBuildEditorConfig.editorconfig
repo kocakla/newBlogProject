@@ -32,6 +32,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQmxvZ0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/ramazankocak/Documents/dotnetProjects/newBlogProject/Views/Admin/CreateBlog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ3JlYXRlQmxvZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/ramazankocak/Documents/dotnetProjects/newBlogProject/Views/Admin/EditBlog.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRWRpdEJsb2cuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
