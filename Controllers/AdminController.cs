@@ -84,5 +84,27 @@ namespace WebApplication1.Controllers
             _db.SaveChanges();
             return RedirectToAction("BlogList");
         }
+        public IActionResult Comments(int? blogId)
+        {
+            var comments = new List<Comment>();
+            if (blogId == null)
+            {
+                comments = _db.Comments.ToList();
+            }
+            else
+            {
+                comments = _db.Comments.Where(x => x.BlogId == blogId).ToList();
+            }
+
+            return View(comments);
+        }
+        public IActionResult DeleteComment(int id)
+        {
+            var comment = _db.Comments.Where(x => x.Id == id).FirstOrDefault();
+            _db.Comments.Remove(comment);
+            _db.SaveChanges();
+            return RedirectToAction("Comments");
+        }
+
     }
 }
