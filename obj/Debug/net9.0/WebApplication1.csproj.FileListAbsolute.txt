@@ -1927,3 +1927,8 @@
 /Users/ramazankocak/Documents/dotnetProjects/newBlogProject/obj/Debug/net9.0/compressed/kfi9pq5v3h-vuyk5hsu8t.gz
 /Users/ramazankocak/Documents/dotnetProjects/newBlogProject/obj/Debug/net9.0/compressed/q7qz486trv-w9gruc5uo1.gz
 /Users/ramazankocak/Documents/dotnetProjects/newBlogProject/obj/Debug/net9.0/compressed/g7djg3qw92-py63yt9ces.gz
+/Users/ramazankocak/Documents/dotnetProjects/newBlogProject/bin/Debug/net9.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/Users/ramazankocak/Documents/dotnetProjects/newBlogProject/bin/Debug/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/ramazankocak/Documents/dotnetProjects/newBlogProject/bin/Debug/net9.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/ramazankocak/Documents/dotnetProjects/newBlogProject/bin/Debug/net9.0/Microsoft.Extensions.Identity.Core.dll
+/Users/ramazankocak/Documents/dotnetProjects/newBlogProject/bin/Debug/net9.0/Microsoft.Extensions.Identity.Stores.dll

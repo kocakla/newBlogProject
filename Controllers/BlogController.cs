@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Context;
 using WebApplication1.Models;
+using WebApplication1.Models.ViewModels;
+using WebApplication1.Identity;
+using Microsoft.AspNetCore.Identity;
+using System.Runtime.CompilerServices;
 
 namespace WebApplication1.Controllers
 {
@@ -16,7 +20,7 @@ namespace WebApplication1.Controllers
         public IActionResult Index()
         {
 
-            var blogs = _db.Blogs.ToList();
+            var blogs = _db.Blogs.Where(x => x.Status ==1).ToList();
             return View(blogs);
         }
         public IActionResult Detail(int id)

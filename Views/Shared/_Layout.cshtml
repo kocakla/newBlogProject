@@ -17,92 +17,106 @@
     <div class="header_resize">
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="/Blog/index">Anasayfa</a></li>
+          <li class="active"><a href="/blog/index">AnaSayfa</a></li>
+          @* bunlari olusturuacagiz *@
           <li><a href="/blog/support">Destek</a></li>
-          <li><a href="/blog/about">Hakkımda</a></li>
-          @*<li><a href="blog">Blog</a></li>*@
-          <li><a href="/blog/contact">İletişim</a></li>
+          <li><a href="/blog/about">Hakkimizda</a></li>
+          @* <li><a href="blog.html">Blog</a></li> *@
+                        <li><a href="/blog/contact">Iletisim</a></li>
+                        <li><a href="/Admin/Index">Admin Girisi</a></li>
         </ul>
       </div>
       <div class="logo">
-        <h1><a href="/blog/index">Blogs<span>V1</span></a> <small>Bloglarım buradadır...</main></small></h1>
+        <h1><a href="/blog/index">Blogs<span>V1</span></a> <small>biz bu isi yapiyoruz</small></h1>
       </div>
       <div class="clr"></div>
     </div>
   </div>
   <div class="content">
     <div class="content_resize">
-
+      
             @RenderBody()
-      <div class="sidebar">
-        <div class="searchform">
-          <form id="formsearch" name="formsearch" method="post" action="#">
-            <span>
-            <input name="editbox_search" class="editbox_search" id="editbox_search" maxlength="80" placeholder="Blog Ara" value="" type="text" />
-            </span>
-            <input name="button_search" src="/images/search_btn.gif" class="button_search" type="image" />
-          </form>
+                <div class="sidebar">
+                    <div class="searchform">
+                        <form id="formsearch" name="formsearch" method="post" action="#">
+                            <span>
+                                <input name="editbox_search" class="editbox_search" id="editbox_search" maxlength="80" placeholder="Blog Ara" value="" type="text" />
+                            </span>
+                            <input name="button_search" src="/images/search_btn.gif" class="button_search" type="image" />
+                        </form>
+                    </div>
+                    <div class="gadget">
+                        <h2 class="star"><span>Yan</span> Menu</h2>
+                        <div class="clr"></div>
+                        <ul class="sb_menu">
+                            <li><a href="/blog/index">AnaSayfa</a></li>
+                            <li><a href="/blog/support">Destek</a></li>
+                            <li><a href="/blog/about">Hakkimizda</a></li>
+                            <li><a href="/blog/contact">Iletisim</a></li>
+                        </ul>
+                    </div>
+                    <div class="gadget">
+                        <h2 class="star"><span>Etiketler</span></h2>
+                        <div class="clr"></div>
+                        <ul class="ex_menu">
+                            <li>
+                                <a href="#">tech</a><br />
+                            </li>
+                            <li>
+                                <a href="#">software</a><br />
+                            </li>
+                            <li>
+                                <a href="#">bilgisayar</a><br />
+                            </li>
+                            <li>
+                                <a href="#">teknoloji</a><br />
+                            </li>
+                            <li>
+                                <a href="#">yazilim</a><br />
+                            </li>
+                            <li>
+                                <a href="#">tech</a><br />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clr"></div>
+            </div>
         </div>
-        <div class="gadget">
-          <h2 class="star"><span>İkincil</span>Menu</h2>
-          <div class="clr"></div>
-          <ul class="sb_menu">
-            <li><a href="/blog/index">Anasayfa</a></li>
-            <li><a href="/blog/support">Destek</a></li>
-            <li><a href="/blog/about">Hakkımızda</a></li>
-            <li><a href="/blog/contact">İletişim</a></li>
-
-          </ul>
+        <div class="fbg">
+            <div class="fbg_resize">
+                <div class="col c1">
+                    <h2><span>Galeri</span></h2>
+                    <a href="#"><img src="/images/pix1.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix2.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix3.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix4.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix5.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix6.jpg" width="58" height="58" alt="" /></a>
+                </div>
+                <div class="col c2">
+                    <h2><span>Biz Kimiz</span></h2>
+                    <p>
+                        Yazilimci Sarman<br />
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. <a href="#">Morbi tincidunt, orci ac convallis aliquam</a>, lectus turpis varius lorem, eu posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac blandit ante orci ut diam.
+                    </p>
+                </div>
+                <div class="col c3">
+                    <h2><span>Iletisim</span></h2>
+                    <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue.</p>
+                    <p><a href="mailto:denemedenemedeneme@gmail.com">yazilimcisarman@gmail.com</a></p>
+                    <p>
+                        +1 (123) 444-5677<br />
+                        +1 (123) 444-5678
+                    </p>
+                    <p>Address: 123 TemplateAccess Rd1</p>
+                </div>
+                <div class="clr"></div>
+            </div>
         </div>
-        <div class="gadget">
-          <h2 class="star"><span>Etiketler</span></h2>
-          <div class="clr"></div>
-          <ul class="ex_menu">
-            <li>
-              <a href="#">Tech</a><br />
-            </li>
-            <li>
-               <a href="#">Software</a><br />
-            </li>
-            <li> <a href="#">Hardware</a><br /></li>
-            <li> <a href="#">Developing</a><br /></li>
-            <li> <a href="#">Books</a><br /></li>
-            <li> <a href="#">Personal</a><br /></li>
-          </ul>
+        <div class="footer">
+            <div class="footer_resize">
+                <p class="lf">Copyright &copy; 2010 <a href="#">BlogsV1</a> - All Rights Reserved</p>
+                <p class="rf">Design by <a href="http://www.coolwebtemplates.net/">Cool Website Templates</a></p>
+                <div class="clr"></div>
+            </div>
         </div>
-      </div>
-      <div class="clr"></div>
     </div>
-  </div>
-  <div class="fbg">
-    <div class="fbg_resize">
-      <div class="col c1">
-        <h2><span>Galeri</span></h2>
-        <a href="#"><img src="/images/pix1.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix2.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix3.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix4.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix5.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix6.jpg" width="58" height="58" alt="" /></a> </div>
-      <div class="col c2">
-        <h2><span>Hakkımızda</span></h2>
-        <p>Yazılımcının ismi<br />
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. <a href="#">Morbi tincidunt, orci ac convallis aliquam</a>, lectus turpis varius lorem, eu posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac blandit ante orci ut diam.</p>
-      </div>
-      <div class="col c3">
-        <h2><span>Contact</span></h2>
-        <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue.</p>
-        <p><a href="mailto:support@yoursite.com">support@yoursite.com</a></p>
-        <p>+1 (123) 444-5677<br />
-          +1 (123) 444-5678</p>
-        <p>Address: 123 TemplateAccess Rd1</p>
-      </div>
-      <div class="clr"></div>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="footer_resize">
-      <p class="lf">Copyright &copy; 2010 <a href="#">BlogV1</a> - All Rights Reserved</p>
-      <p class="rf">Design by <a href="http://www.coolwebtemplates.net/">Cool Website Templates</a></p>
-      <div class="clr"></div>
-    </div>
-  </div>
-</div>
-<!-- END PAGE SOURCE -->
+    <!-- END PAGE SOURCE -->
 </body>
 </html>

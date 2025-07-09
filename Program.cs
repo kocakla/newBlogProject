@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore.SqlServer;
 using WebApplication1.Context;
 using Microsoft.EntityFrameworkCore;
+using WebApplication1.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,22 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<BlogDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddDbContext<BlogIdentityDbContext>(options =>
+{
+    var configuration = builder.Configuration;
+    var connectionString = configuration.GetConnectionString("DefaultConnection");
+    options.UseSqlServer(connectionString);
+});
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Blog/Login";
+    });
+builder.Services.AddIdentity<BlogIdentityUser,BlogIdentityRole>()
+    .AddEntityFrameworkStores<BlogIdentityDbContext>()
+    .AddDefaultTokenProviders();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,14 +42,12 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
-
-app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Admin}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    pattern: "{controller=Blog}/{action=Index}/{id?}");
 
 
 app.Run();

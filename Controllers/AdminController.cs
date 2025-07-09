@@ -3,26 +3,55 @@ using WebApplication1.Context;
 using WebApplication1.Models;
 using WebApplication1.Controllers;
 using WebApplication1.Migrations;
-
+using WebApplication1.Models.ViewModels;
+using WebApplication1.Identity;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
     public class AdminController : Controller
     {
         private readonly BlogDbContext _db;
-        public AdminController(BlogDbContext db)
+        private readonly UserManager<BlogIdentityUser> _userManager;
+        private readonly SignInManager<BlogIdentityUser> _signInManager;
+        public AdminController(BlogDbContext db, UserManager<BlogIdentityUser> userManager, SignInManager<BlogIdentityUser> signInManager)
         {
             _db = db;
-
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         public IActionResult Index()
         {
-            return View();
+            var dashboard = new DashboardViewModel();
+
+            var toplamblogsayisi = _db.Blogs.Count();
+            var toplamgoruntulenme = _db.Blogs.Select(x => x.ViewCount).Sum();
+            var encokgoruntulneneblog = _db.Blogs.OrderByDescending(x => x.ViewCount).FirstOrDefault();
+            var ensonyayinlananblog = _db.Blogs.OrderByDescending(x => x.PublishDate).FirstOrDefault();
+            var toplamyorumsayisi = _db.Comments.Count();
+            var encokyorumalanblogId = _db.Comments
+                                        .GroupBy(x => x.BlogId) // BlogId'ye göre grupla
+                                        .OrderByDescending(g => g.Count()) // Grupları yorum sayısına göre azalan sırala
+                                        .Select(g => g.Key) // En çok yorumu olan BlogId'yi al
+                                        .FirstOrDefault(); // İlk sonucu getir
+            var encokyorumalanblog = _db.Blogs.Where(x=> x.Id == encokyorumalanblogId).FirstOrDefault();
+
+            var bugunyapilanyorumsayisi = _db.Comments.Where(x => x.PublishDate.Date == DateTime.Now.Date).Count();
+
+            dashboard.TotalBlogCount = toplamblogsayisi;
+            dashboard.TotalViewCount = toplamgoruntulenme;
+            dashboard.MostViewedBlog = encokgoruntulneneblog;
+            dashboard.LatestBlog = ensonyayinlananblog;
+            dashboard.TotalCommentCount = toplamyorumsayisi;
+            dashboard.MostCommentedBlog = encokyorumalanblog;
+            dashboard.TodayCommentCount = bugunyapilanyorumsayisi;
+
+            return View(dashboard);
         }
         public IActionResult BlogList()
         {
             var blogs = _db.Blogs.ToList();
-
             return View(blogs);
         }
         public IActionResult EditBlog(int id)
@@ -105,6 +134,39 @@ namespace WebApplication1.Controllers
             _db.SaveChanges();
             return RedirectToAction("Comments");
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            //burada sifre olusturuken buyuk harf kucuk harf sayi 6 karekter ve simge gerekli
+            if (model.Password == model.RePassword)
+            {
+                var user = new BlogIdentityUser
+                {
+                    Name = model.Name,
+                    Surname = model.Surname,
+                    Email = model.Email,
+                    UserName = model.Email,
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
+        
     }
 }
